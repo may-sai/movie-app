@@ -1,0 +1,55 @@
+<div class="extras">
+
+  @if (trailerUrl(); as url) {
+    <section>
+      <h2>Trailer</h2>
+      <div class="trailer">
+        <iframe
+          [src]="url"
+          title="Trailer"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
+    </section>
+  }
+
+  @if (cast().length > 0) {
+    <section>
+      <h2>Cast</h2>
+      <div class="scroller">
+        @for (person of cast(); track person.credit_id) {
+          <div class="cast-card">
+            @if (person.profile_path) {
+              <img [src]="'https://image.tmdb.org/t/p/w185' + person.profile_path" [alt]="person.name">
+            } @else {
+              <div class="no-photo">?</div>
+            }
+            <strong>{{ person.name }}</strong>
+            <span>{{ person.character }}</span>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+  @if (similar().length > 0) {
+    <section>
+      <h2>Similar movies</h2>
+      <div class="scroller">
+        @for (item of similar(); track item.id) {
+          <div class="similar-card" (click)="openMovie(item)">
+            @if (item.poster_path) {
+              <img [src]="'https://image.tmdb.org/t/p/w342' + item.poster_path" [alt]="item.title">
+            } @else {
+              <div class="no-photo">?</div>
+            }
+            <strong>{{ item.title }}</strong>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+</div>

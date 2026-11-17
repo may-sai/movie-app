@@ -1,0 +1,6 @@
+<app-movie-grid
+  title="My Favorites"
+  emptyMessage="No favorites yet. Open a movie and click « Add to Favorites »."
+  [movies]="movieService.favoriteList()"
+  (removed)="movieService.removeFromFavorites($event.id)"
+></app-movie-grid>

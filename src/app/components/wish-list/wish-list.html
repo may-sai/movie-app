@@ -1,0 +1,6 @@
+<app-movie-grid
+  title="My Wishlist"
+  emptyMessage="Your wishlist is empty. Open a movie and click « Add to Wishlist »."
+  [movies]="movieService.wishList()"
+  (removed)="movieService.removeFromWishList($event.id)"
+></app-movie-grid>

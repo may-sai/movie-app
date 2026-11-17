@@ -1,0 +1,6 @@
+<app-movie-grid
+  title="Watched movies"
+  emptyMessage="You haven't marked any movie as watched. Open a movie and click « Mark as watched »."
+  [movies]="movieService.watchedList()"
+  (removed)="movieService.removeFromWatched($event.id)"
+></app-movie-grid>
